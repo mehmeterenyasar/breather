@@ -1,0 +1,259 @@
+/*
+ * The break window.
+ *
+ * Dark and quiet by default; a break is a rest from the rest of the screen.
+ * One thing in the middle, a sentence under it, three buttons at the bottom.
+ */
+
+.break-body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg-sunken);
+}
+
+.break {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-5);
+  min-height: 100vh;
+  padding: var(--sp-6) var(--sp-5);
+  text-align: center;
+}
+
+.break__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+}
+
+.break__title {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.break__queue {
+  font-size: var(--fs-sm);
+  color: var(--fg-faint);
+}
+
+.break__stage {
+  display: grid;
+  place-items: center;
+  min-height: 232px;
+}
+
+.break__stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.break__preview,
+.break__count {
+  font-size: 54px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--tone-text);
+}
+
+.break__instruction {
+  max-width: 34ch;
+  font-size: var(--fs-lg);
+  line-height: 1.45;
+  color: var(--fg-muted);
+}
+
+.break__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  width: 100%;
+  max-width: 320px;
+}
+
+.break__cta {
+  flex: 1 1 100%;
+}
+
+.break__actions .btn--ghost {
+  flex: 1 1 0;
+  min-width: 120px;
+}
+
+.break--done {
+  color: var(--tone-text);
+}
+
+/* ---------- Nefes rehberi ---------- */
+
+.breath {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.breath__disc,
+.breath__halo {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--r-full);
+  /* Scale is set per frame, so the transition stays short enough not to lag. */
+  transition: transform 90ms linear;
+}
+
+.breath__disc {
+  background: var(--tone-soft);
+  border: 2px solid var(--tone);
+}
+
+.breath__halo {
+  background: var(--tone);
+  opacity: 0.1;
+}
+
+.breath__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.breath__phase {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  color: var(--tone-text);
+}
+
+.breath__count {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.breath__round {
+  position: absolute;
+  bottom: -28px;
+  font-size: var(--fs-sm);
+  color: var(--fg-faint);
+}
+
+/* Reduced motion: no circle, same information. */
+.breath--still {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  width: 240px;
+}
+
+.breath--still .breath__round {
+  position: static;
+}
+
+.breath__bar {
+  width: 100%;
+  height: 6px;
+  border-radius: var(--r-full);
+  background: var(--track);
+  overflow: hidden;
+}
+
+.breath__bar-fill {
+  height: 100%;
+  background: var(--tone);
+  transition: width 240ms linear;
+}
+
+/* Stretch figure */
+
+.figure {
+  overflow: visible;
+}
+
+.figure__part {
+  stroke: var(--fg-faint);
+  stroke-width: 3;
+  fill: none;
+}
+
+.figure__part--on {
+  stroke: var(--tone);
+  stroke-width: 5;
+}
+
+/* The progress ring, reused from the popup */
+
+.ring {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.ring__track {
+  stroke: var(--track);
+}
+
+.ring__value {
+  stroke: var(--tone);
+  transition: stroke-dashoffset 240ms linear;
+}
+
+.ring__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Butonlar ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-md);
+  transition:
+    background var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+}
+
+.btn--primary {
+  height: 46px;
+  background: var(--tone);
+  color: var(--tone-fg);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+}
+
+.btn--primary:hover {
+  background: var(--tone-hover);
+}
+
+.btn--ghost {
+  height: 38px;
+  padding: 0 var(--sp-3);
+  background: var(--bg-elev);
+  color: var(--fg-muted);
+  font-size: var(--fs-md);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  color: var(--fg);
+}
+
+.btn--ghost:disabled {
+  opacity: 0.4;
+}
