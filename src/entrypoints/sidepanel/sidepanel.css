@@ -1,0 +1,29 @@
+/*
+ * Yan panel, popup bilesenini yeniden kullanir; burada yalnizca olcu farklari var.
+ * Panel genisligi kullanicinin surukledigi kadardir, sabit genislik olamaz.
+ */
+
+.sidepanel-body {
+  width: auto;
+  min-width: 260px;
+  margin: 0;
+  background: var(--bg);
+}
+
+html[data-size='compact'] .sidepanel-body,
+.sidepanel-body {
+  width: auto;
+}
+
+.sidepanel-body .popup {
+  max-width: 420px;
+  margin: 0 auto;
+  min-height: 100vh;
+  /* Panel yuksek: halka ve denetimler dikeyde ortalanir, serit altta kalir. */
+  justify-content: center;
+  padding-bottom: var(--sp-5);
+}
+
+.sidepanel-body .strip {
+  margin-top: auto;
+}
