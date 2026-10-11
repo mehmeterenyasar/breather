@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Type check, lint and the full test suite.
+      - run: npm run check
+
+      # A green test run means little if the extension no longer builds.
+      - run: npm run build:chrome
+      - run: npm run build:edge
+      - run: npm run build:firefox
+
+  package:
+    runs-on: ubuntu-latest
+    needs: check
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run zip
+
+      # Store-ready packages for every commit on main.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: extension-packages
+          path: .output/*.zip
+          retention-days: 30
