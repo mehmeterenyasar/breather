@@ -1,0 +1,294 @@
+/*
+ * TASARIM TOKENLARI
+ *
+ * Every colour, space, radius and duration is defined here; no component writes
+ * a raw value. Light and dark, and the accent colour, do nothing but redefine
+ * these variables.
+ *
+ * The theme comes from <html data-theme="light|dark">, falling back to
+ * `prefers-color-scheme`, and the accent from <html data-accent="...">.
+ *
+ * Focus and break get separate tones: focus takes the accent the user chose,
+ * break a fixed blue-grey that sits well with all of them. The phase is legible
+ * from the colour without the palette coming apart.
+ */
+
+:root {
+  color-scheme: light dark;
+
+  /* Spacing scale */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+
+  /* Radii */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-full: 999px;
+
+  /* Tipografi */
+  --font-sans:
+    'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --fs-xs: 11px;
+  --fs-sm: 12px;
+  --fs-md: 14px;
+  --fs-lg: 16px;
+  --fs-xl: 20px;
+  --fs-display: 44px;
+  --lh-tight: 1.15;
+  --lh-normal: 1.5;
+
+  /* Hareket */
+  --dur-fast: 120ms;
+  --dur: 220ms;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Ring thickness */
+  --ring-width: 10px;
+}
+
+/* Light, the default */
+:root,
+:root[data-theme='light'] {
+  --bg: #fbfaf7;
+  --bg-elev: #ffffff;
+  --bg-sunken: #f2f1ec;
+  --fg: #1f2421;
+  --fg-muted: #676e6a;
+  --fg-faint: #8d948f;
+  --border: #e5e2d9;
+  --border-strong: #d2cec3;
+  --track: #e8e6df;
+  --track-strong: #c9c5b9;
+
+  --accent: #3f7d6f;
+  --accent-hover: #35695d;
+  --accent-fg: #ffffff;
+  /* Darkened enough for AA contrast on text */
+  --accent-text: #2d5c51;
+  --accent-soft: #e7f0ed;
+
+  --break: #5d7fa8;
+  --break-text: #44607f;
+  --break-soft: #e9eef4;
+
+  --danger: #a4452f;
+  --shadow-soft: 0 1px 2px rgb(31 36 33 / 6%), 0 8px 24px rgb(31 36 33 / 6%);
+  --focus-ring: #1f2421;
+}
+
+/* ---------- Koyu tema ---------- */
+:root[data-theme='dark'] {
+  --bg: #14171a;
+  --bg-elev: #1b1f23;
+  --bg-sunken: #0f1214;
+  --fg: #e9ecea;
+  --fg-muted: #a0a8a4;
+  --fg-faint: #7c847f;
+  --border: #2a3035;
+  --border-strong: #3a4248;
+  --track: #262c31;
+  --track-strong: #3d464d;
+
+  --accent: #74c0ae;
+  --accent-hover: #86cdbb;
+  --accent-fg: #0f1a17;
+  --accent-text: #8ed0bf;
+  --accent-soft: #1c2a27;
+
+  --break: #92b2d6;
+  --break-text: #a6c2e0;
+  --break-soft: #1b2430;
+
+  --danger: #e08b78;
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 30%), 0 8px 24px rgb(0 0 0 / 24%);
+  --focus-ring: #e9ecea;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #14171a;
+    --bg-elev: #1b1f23;
+    --bg-sunken: #0f1214;
+    --fg: #e9ecea;
+    --fg-muted: #a0a8a4;
+    --fg-faint: #7c847f;
+    --border: #2a3035;
+    --border-strong: #3a4248;
+    --track: #262c31;
+    --track-strong: #3d464d;
+
+    --accent: #74c0ae;
+    --accent-hover: #86cdbb;
+    --accent-fg: #0f1a17;
+    --accent-text: #8ed0bf;
+    --accent-soft: #1c2a27;
+
+    --break: #92b2d6;
+    --break-text: #a6c2e0;
+    --break-soft: #1b2430;
+
+    --danger: #e08b78;
+    --shadow-soft: 0 1px 2px rgb(0 0 0 / 30%), 0 8px 24px rgb(0 0 0 / 24%);
+    --focus-ring: #e9ecea;
+  }
+}
+
+/* ---------- Vurgu renkleri ---------- */
+/* Each accent gets a darker variant for light mode and a lighter one for dark. */
+
+:root[data-accent='indigo'] {
+  --accent: #5361c8;
+  --accent-hover: #4552b0;
+  --accent-text: #43509f;
+  --accent-soft: #e9ebf8;
+}
+:root[data-accent='plum'] {
+  --accent: #80529a;
+  --accent-hover: #6e4585;
+  --accent-text: #6a4480;
+  --accent-soft: #f1eaf6;
+}
+:root[data-accent='clay'] {
+  --accent: #a75f42;
+  --accent-hover: #904f35;
+  --accent-text: #8a4f36;
+  --accent-soft: #f7ece6;
+}
+:root[data-accent='ocean'] {
+  --accent: #2f7395;
+  --accent-hover: #27617f;
+  --accent-text: #27617f;
+  --accent-soft: #e6f0f5;
+}
+:root[data-accent='graphite'] {
+  --accent: #4e5a62;
+  --accent-hover: #414c53;
+  --accent-text: #414c53;
+  --accent-soft: #eceff1;
+}
+
+:root[data-theme='dark'][data-accent='indigo'] {
+  --accent: #8e9bf0;
+  --accent-hover: #a0abf4;
+  --accent-fg: #141833;
+  --accent-text: #a3aef5;
+  --accent-soft: #1d2140;
+}
+:root[data-theme='dark'][data-accent='plum'] {
+  --accent: #bb97d4;
+  --accent-hover: #c8a9dd;
+  --accent-fg: #221433;
+  --accent-text: #c6a6dc;
+  --accent-soft: #241a2e;
+}
+:root[data-theme='dark'][data-accent='clay'] {
+  --accent: #dd9c7f;
+  --accent-hover: #e6ad93;
+  --accent-fg: #2e180e;
+  --accent-text: #e2a98f;
+  --accent-soft: #2d1f18;
+}
+:root[data-theme='dark'][data-accent='ocean'] {
+  --accent: #76b7d6;
+  --accent-hover: #8bc4de;
+  --accent-fg: #0c2330;
+  --accent-text: #8ac4de;
+  --accent-soft: #15242c;
+}
+:root[data-theme='dark'][data-accent='graphite'] {
+  --accent: #9dacb5;
+  --accent-hover: #aebbc3;
+  --accent-fg: #171d21;
+  --accent-text: #adbac2;
+  --accent-soft: #1e2428;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light'])[data-accent='indigo'] {
+    --accent: #8e9bf0;
+    --accent-hover: #a0abf4;
+    --accent-fg: #141833;
+    --accent-text: #a3aef5;
+    --accent-soft: #1d2140;
+  }
+  :root:not([data-theme='light'])[data-accent='plum'] {
+    --accent: #bb97d4;
+    --accent-hover: #c8a9dd;
+    --accent-fg: #221433;
+    --accent-text: #c6a6dc;
+    --accent-soft: #241a2e;
+  }
+  :root:not([data-theme='light'])[data-accent='clay'] {
+    --accent: #dd9c7f;
+    --accent-hover: #e6ad93;
+    --accent-fg: #2e180e;
+    --accent-text: #e2a98f;
+    --accent-soft: #2d1f18;
+  }
+  :root:not([data-theme='light'])[data-accent='ocean'] {
+    --accent: #76b7d6;
+    --accent-hover: #8bc4de;
+    --accent-fg: #0c2330;
+    --accent-text: #8ac4de;
+    --accent-soft: #15242c;
+  }
+  :root:not([data-theme='light'])[data-accent='graphite'] {
+    --accent: #9dacb5;
+    --accent-hover: #aebbc3;
+    --accent-fg: #171d21;
+    --accent-text: #adbac2;
+    --accent-soft: #1e2428;
+  }
+}
+
+/* ---------- Faz tonu ---------- */
+/*
+ * `--tone` is whatever colour the interface is wearing at the moment. It is
+ * defined on the root so that pages without a phase — settings, statistics, the
+ * welcome flow — simply get the accent. Only the timer surfaces override it with
+ * `data-phase`.
+ *
+ * The root default is not decoration. Without it `--tone` was undefined on every
+ * page that has no phase, and everything resting on it — filled buttons, switched
+ * on toggles, the heatmaps — rendered transparent.
+ */
+:root {
+  --tone: var(--accent);
+  --tone-hover: var(--accent-hover);
+  --tone-text: var(--accent-text);
+  --tone-soft: var(--accent-soft);
+  --tone-fg: var(--accent-fg);
+}
+
+[data-phase='shortBreak'],
+[data-phase='longBreak'] {
+  --tone: var(--break);
+  --tone-hover: var(--break);
+  --tone-text: var(--break-text);
+  --tone-soft: var(--break-soft);
+  --tone-fg: var(--accent-fg);
+}
+
+[data-phase='focus'],
+[data-phase='idle'] {
+  --tone: var(--accent);
+  --tone-hover: var(--accent-hover);
+  --tone-text: var(--accent-text);
+  --tone-soft: var(--accent-soft);
+  --tone-fg: var(--accent-fg);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur: 0ms;
+  }
+}

@@ -1,0 +1,578 @@
+/*
+ * Popup layout.
+ *
+ * Hierarchy from type and space: no shadows, one thin divider. The width comes
+ * from settings, 368px normally and 320px compact.
+ */
+
+body {
+  width: 368px;
+}
+
+html[data-size='compact'] body {
+  width: 320px;
+}
+
+.popup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-5) var(--sp-3);
+}
+
+.popup--loading {
+  min-height: 420px;
+}
+
+.popup__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.popup__status {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--tone-text);
+}
+
+/* Fixed height here, or the popup jumps as the presets appear and go. */
+.popup__slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  width: 100%;
+}
+
+/* ---------- Mod sekmeleri ---------- */
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  padding: 3px;
+  background: var(--bg-sunken);
+  border-radius: var(--r-md);
+}
+
+.tabs__tab {
+  padding: 6px 2px;
+  border-radius: var(--r-sm);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--fg-muted);
+  white-space: nowrap;
+  transition:
+    background var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+}
+
+.tabs__tab:hover:not(:disabled):not(.tabs__tab--on) {
+  color: var(--fg);
+}
+
+.tabs__tab--on {
+  background: var(--bg-elev);
+  color: var(--fg);
+  box-shadow: var(--shadow-soft);
+}
+
+.tabs__tab:disabled {
+  opacity: 0.4;
+}
+
+/* ---------- Halka ---------- */
+
+.ring {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.ring__svg {
+  display: block;
+}
+
+.ring__track {
+  stroke: var(--track);
+}
+
+.ring__value {
+  stroke: var(--tone);
+  transition: stroke-dashoffset var(--dur) linear;
+}
+
+.ring__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.popup__time {
+  font-size: var(--fs-display);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.02em;
+}
+
+html[data-size='compact'] .popup__time {
+  font-size: 36px;
+}
+
+.popup__mode {
+  font-size: var(--fs-sm);
+  color: var(--fg-faint);
+}
+
+/* Cycle dots */
+
+.dots {
+  display: flex;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dots__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--r-full);
+  background: var(--track);
+  transition: background var(--dur) var(--ease);
+}
+
+.dots__dot--on {
+  background: var(--tone);
+}
+
+/* Countdown presets */
+
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-1);
+}
+
+.presets__item {
+  min-width: 36px;
+  padding: 5px 8px;
+  border-radius: var(--r-sm);
+  background: var(--bg-sunken);
+  font-size: var(--fs-sm);
+  color: var(--fg-muted);
+  transition:
+    background var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+}
+
+.presets__item:hover {
+  color: var(--fg);
+}
+
+.presets__item--on {
+  background: var(--tone-soft);
+  color: var(--tone-text);
+  font-weight: 600;
+}
+
+.presets--custom {
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: var(--sp-2);
+}
+
+.presets__label {
+  font-size: var(--fs-sm);
+  color: var(--fg-muted);
+}
+
+.presets__input {
+  width: 64px;
+  padding: 5px 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  background: var(--bg-elev);
+  color: var(--fg);
+  font: inherit;
+  font-size: var(--fs-sm);
+}
+
+.hint {
+  font-size: var(--fs-sm);
+  color: var(--fg-faint);
+  text-align: center;
+  max-width: 28ch;
+}
+
+/* Tag chips */
+
+.tags {
+  display: flex;
+  gap: var(--sp-1);
+  overflow-x: auto;
+  scrollbar-width: none;
+  min-height: 28px;
+}
+
+.tags::-webkit-scrollbar {
+  display: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex: 0 0 auto;
+  padding: 4px 10px;
+  border-radius: var(--r-full);
+  background: var(--bg-sunken);
+  font-size: var(--fs-sm);
+  color: var(--fg-muted);
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition:
+    background var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+}
+
+.chip__dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: var(--r-full);
+  background: var(--chip-color, var(--fg-faint));
+}
+
+.chip--on {
+  background: var(--tone-soft);
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.chip--add {
+  padding: 4px 11px;
+  font-size: var(--fs-md);
+  line-height: 1;
+}
+
+.tagform {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 28px;
+}
+
+.tagform__swatch {
+  width: 10px;
+  height: 10px;
+  flex: 0 0 auto;
+  border-radius: var(--r-full);
+}
+
+.tagform__input {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  background: var(--bg-elev);
+  color: var(--fg);
+  font: inherit;
+  font-size: var(--fs-sm);
+}
+
+.tagform__ok {
+  padding: 4px 10px;
+  border-radius: var(--r-sm);
+  background: var(--tone-soft);
+  color: var(--tone-text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.tagform__ok:disabled {
+  opacity: 0.45;
+}
+
+/* Review and suggestion cards */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--bg-elev);
+}
+
+.card--accent {
+  border-color: transparent;
+  background: var(--tone-soft);
+}
+
+.card__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-2);
+}
+
+.card__title {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.card__meta {
+  font-size: var(--fs-xs);
+  color: var(--fg-faint);
+}
+
+.card__row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.card__input {
+  flex: 1;
+  min-width: 0;
+  padding: 5px 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+  font-size: var(--fs-sm);
+}
+
+.stars {
+  display: flex;
+  gap: var(--sp-1);
+}
+
+.stars__item {
+  padding: 2px;
+  border-radius: var(--r-sm);
+  color: var(--track);
+  line-height: 0;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.stars__item svg {
+  fill: currentColor;
+}
+
+.stars__item:hover,
+.stars__item--on {
+  color: var(--tone);
+}
+
+/* ---------- Butonlar ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-md);
+  transition:
+    background var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+}
+
+.btn--primary {
+  height: 46px;
+  background: var(--tone);
+  color: var(--tone-fg);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+}
+
+.btn--primary:hover {
+  background: var(--tone-hover);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.controls__secondary {
+  display: grid;
+  grid-template-columns: repeat(var(--count, 2), 1fr);
+  gap: var(--sp-2);
+}
+
+.btn--ghost {
+  height: 34px;
+  color: var(--fg-muted);
+  font-size: var(--fs-sm);
+  background: var(--bg-sunken);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  color: var(--fg);
+}
+
+.btn--ghost:disabled {
+  opacity: 0.45;
+}
+
+.btn--small {
+  height: 28px;
+  padding: 0 10px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  background: var(--bg-sunken);
+  color: var(--fg);
+}
+
+.btn--solid {
+  background: var(--tone);
+  color: var(--tone-fg);
+}
+
+.btn--quiet {
+  background: transparent;
+  color: var(--fg-muted);
+  font-weight: 400;
+}
+
+/* Bottom strip */
+
+.strip {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-sm);
+  color: var(--fg-muted);
+}
+
+.strip__row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+}
+
+.strip__row--tools {
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+}
+
+/* Next break, water counter, mute. */
+.tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: var(--r-full);
+  background: var(--bg-sunken);
+  font-size: var(--fs-xs);
+  color: var(--fg-muted);
+  white-space: nowrap;
+  transition:
+    background var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+}
+
+button.tool:hover {
+  color: var(--fg);
+}
+
+.tool--static {
+  background: transparent;
+  padding-left: 0;
+  color: var(--fg-faint);
+}
+
+.tool--on {
+  background: var(--tone-soft);
+  color: var(--tone-text);
+  font-weight: 600;
+}
+
+/* The mute menu takes the whole second row of the strip. */
+.mutemenu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+  width: 100%;
+}
+
+.mutemenu__item {
+  flex: 1 1 auto;
+  padding: 4px 8px;
+  border-radius: var(--r-sm);
+  background: var(--bg-sunken);
+  font-size: var(--fs-xs);
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+
+.mutemenu__item:hover {
+  color: var(--fg);
+}
+
+.mutemenu__item--quiet {
+  background: transparent;
+}
+
+.strip__label {
+  color: var(--fg-faint);
+}
+
+.strip__value {
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.strip__goal {
+  margin-left: auto;
+  color: var(--fg-faint);
+}
+
+/* Pushes the mute and icon buttons to the right. */
+.strip__spacer {
+  flex: 1 1 auto;
+}
+
+/* Statistics and settings, in their own little group at the end. */
+.strip__icons {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding-left: var(--sp-2);
+  margin-left: var(--sp-1);
+  border-left: 1px solid var(--border);
+}
+
+.tool--icon {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  justify-content: center;
+  background: transparent;
+  color: var(--fg-faint);
+  line-height: 0;
+}
+
+button.tool--icon:hover {
+  background: var(--bg-sunken);
+  color: var(--fg);
+}
