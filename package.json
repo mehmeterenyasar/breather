@@ -1,0 +1,54 @@
+{
+  "name": "breather",
+  "private": true,
+  "version": "1.1.0",
+  "type": "module",
+  "description": "Focus timer with health breaks - browser extension",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "build": "wxt build",
+    "build:all": "npm run build:chrome && npm run build:edge && npm run build:firefox",
+    "build:chrome": "wxt build -b chrome",
+    "build:edge": "wxt build -b edge",
+    "build:firefox": "wxt build -b firefox",
+    "check": "npm run compile && npm run lint && npm run test",
+    "compile": "tsc --noEmit",
+    "dev": "wxt",
+    "dev:firefox": "wxt -b firefox",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "icons": "node scripts/gen-icons.mjs",
+    "lint": "eslint src tests scripts wxt.config.ts vitest.config.ts eslint.config.js",
+    "lint:fix": "eslint src tests scripts wxt.config.ts vitest.config.ts eslint.config.js --fix",
+    "postinstall": "wxt prepare",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "verify": "npm run check && npm run build:chrome",
+    "zip": "wxt zip -b chrome && wxt zip -b edge && wxt zip -b firefox"
+  },
+  "dependencies": {
+    "dexie": "^4.4.6",
+    "preact": "^10.29.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@preact/preset-vite": "^2.10.6",
+    "@types/node": "^24.0.0",
+    "@vitest/coverage-v8": "^5.0.3",
+    "@wxt-dev/i18n": "^0.2.8",
+    "eslint": "^10.12.0",
+    "eslint-config-prettier": "^10.1.8",
+    "fake-indexeddb": "^6.2.5",
+    "globals": "^17.13.0",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.9.9",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.71.1",
+    "vitest": "^5.0.3",
+    "wxt": "^0.21.4"
+  }
+}
