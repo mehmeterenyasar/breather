@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Breather"
+  },
+  "extDescription": {
+    "message": "Odak zamanlayıcı ve sağlık molaları. Hesap yok, veri cihazında kalır."
+  },
+  "cmdToggleTimer": {
+    "message": "Zamanlayıcıyı başlat / duraklat"
+  },
+  "cmdSkipPhase": {
+    "message": "Fazı atla"
+  }
+}

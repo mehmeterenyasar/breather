@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Breather"
+  },
+  "extDescription": {
+    "message": "Minuteur de concentration avec pauses santé. Sans compte, vos données restent sur votre appareil."
+  },
+  "cmdToggleTimer": {
+    "message": "Démarrer / mettre en pause"
+  },
+  "cmdSkipPhase": {
+    "message": "Passer la phase"
+  }
+}

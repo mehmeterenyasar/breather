@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Breather"
+  },
+  "extDescription": {
+    "message": "Temporizador de concentración con pausas saludables. Sin cuenta, tus datos se quedan en tu dispositivo."
+  },
+  "cmdToggleTimer": {
+    "message": "Iniciar / pausar temporizador"
+  },
+  "cmdSkipPhase": {
+    "message": "Saltar fase"
+  }
+}

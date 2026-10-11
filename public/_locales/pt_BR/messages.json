@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Breather"
+  },
+  "extDescription": {
+    "message": "Cronômetro de foco com pausas saudáveis. Sem conta, seus dados ficam no seu dispositivo."
+  },
+  "cmdToggleTimer": {
+    "message": "Iniciar / pausar cronômetro"
+  },
+  "cmdSkipPhase": {
+    "message": "Pular fase"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Breather"
+  },
+  "extDescription": {
+    "message": "Fokus-Timer mit Gesundheitspausen. Kein Konto, deine Daten bleiben auf deinem Gerät."
+  },
+  "cmdToggleTimer": {
+    "message": "Timer starten / pausieren"
+  },
+  "cmdSkipPhase": {
+    "message": "Phase überspringen"
+  }
+}

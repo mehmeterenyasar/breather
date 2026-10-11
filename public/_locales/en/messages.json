@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Breather"
+  },
+  "extDescription": {
+    "message": "Focus timer with health breaks. No account, your data stays on your device."
+  },
+  "cmdToggleTimer": {
+    "message": "Start / pause timer"
+  },
+  "cmdSkipPhase": {
+    "message": "Skip phase"
+  }
+}
