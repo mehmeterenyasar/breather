@@ -10,15 +10,17 @@ requests**, which you can verify yourself in DevTools.
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Tests](https://img.shields.io/badge/tests-295%20passing-brightgreen)
 
-<!--
-  TODO: drop screenshots into docs/ and uncomment this block.
-  Which ones to take and how: store/screenshots.md
--->
-<!--
-| Timer | Break window | Statistics |
-|---|---|---|
-| ![Popup](docs/popup.png) | ![Break](docs/break.png) | ![Stats](docs/stats.png) |
--->
+| Timer                                  | Break window                           |
+| -------------------------------------- | -------------------------------------- |
+| ![The popup mid-focus](docs/popup.png) | ![The breathing guide](docs/break.png) |
+
+![Statistics](docs/stats.png)
+
+![The day-by-hour heatmap](docs/hours.png)
+
+<sub>Screenshots are produced by <a href="scripts/screenshots.mjs">a script</a>,
+against the real extension running in Chromium, so they cannot drift from the
+build.</sub>
 
 ---
 

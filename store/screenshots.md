@@ -1,5 +1,12 @@
 # Screenshots
 
+> The in-app shots used in the README are generated rather than captured by
+> hand: `npx playwright install chromium` once, then `npm run screenshots`. It
+> loads the development build into Chromium, sets each screen up through the
+> extension's own storage and writes `docs/*.png`. The 1280 x 800 marketing
+> shots described below still have to be taken by hand, because they want the
+> browser frame around the popup.
+
 **Size:** 1280 × 800, the larger format both the Chrome Web Store and Edge
 Add-ons accept. Each store wants between one and five images; take the five
 below, in this order.
